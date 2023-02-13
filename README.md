@@ -1,10 +1,10 @@
-Chrome Extension to show the latest data on covid of UK
+Fullscreen Meet presentations
 =======
-![covid_report](https://user-images.githubusercontent.com/11813341/152206544-8e629f40-bf26-4623-8a75-9621183fd0b5.gif)
+![legenda_estensione](https://i.imgur.com/FcDL8li.png)
 
 # Tools used #
 * HTML, CSS and JavaScript
-* [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+* [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) <-- The popup
 
 
-Author [Sampurna Chapagain](https://twitter.com/saam_codes)
+Author [Samuele Radici](https://www.instagram.com/kio.jar/?hl=it)
