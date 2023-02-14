@@ -170,7 +170,7 @@ function onMeetFound(){
 
     setInterval(function () {
     
-        if (document.querySelector(".axUSnc.cZXVke.P9KVBf").childNodes[0].outerHTML.includes("volume_off")) {
+        if (document.querySelector(".Gv1mTb-aTv5jf")) {
 			try{
 				document.querySelector(".C3LXKe").style.display = "none";
 			}catch{}
