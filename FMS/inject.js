@@ -60,7 +60,6 @@ function enterFullScreen(element) {
     }
 };
   
-  
 function zoom(inout) {
     if (zoomValue !== undefined) {
 
