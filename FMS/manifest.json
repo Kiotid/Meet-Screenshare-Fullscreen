@@ -15,9 +15,7 @@
         "default_title": "Fullscreen-Meet-Screenshare"
     },
     "permissions": [
-        "tabs",
-        "activeTab",
-        "scripting"
+        "tabs"
     ],
     "icons": {
         "192": "icon/logo.ico",
