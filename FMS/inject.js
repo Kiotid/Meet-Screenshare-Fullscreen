@@ -149,13 +149,9 @@ function onMeetFound(){
             if (!isFull) {
                 isFull = true;
                 setFullScreen();
-                console.log("Full");
-                document.querySelector(".tTdl5d").style.top = "1%"
-                document.querySelector(".tTdl5d").style.top = "0%"
             } else {
                 isFull = false;
                 setRegularScreen();
-                console.log("Regular");
             }
         }else{
             alert("No screenshare found!");
@@ -175,6 +171,10 @@ function onMeetFound(){
 			}catch{}
             canFullScreen = true;
         } else {
+            if(canFullScreen){
+                setRegularScreen();
+            }
+
             canFullScreen = false;
         }
     
