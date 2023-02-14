@@ -1,4 +1,4 @@
-Fullscreen Meet presentations
+Fullscreen Meet Screenshare
 =======
 ![legenda_estensione](https://i.imgur.com/FcDL8li.png)
 
