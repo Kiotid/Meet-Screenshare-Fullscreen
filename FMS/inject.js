@@ -1,5 +1,5 @@
 function setFullScreen() {
-    regularScreen = document.querySelector(".T4LgNb")
+    regularScreen = document.querySelector(".T4LgNb").parentElement.innerHTML;
     parentScreen = document.querySelector(".T4LgNb").parentElement;
 
     try {
@@ -43,20 +43,22 @@ function setFullScreen() {
 }
 
 function setRegularScreen() {
+    exitFullScreen(document.body);
     document.querySelector(".T4LgNb").remove();
-    parentScreen.innerHTML = regularScreen.outerHTML;
+    parentScreen.innerHTML = regularScreen;
 
 }
 
-function enterFullScreen(element) {
-    if(element.requestFullscreen) {
-      element.requestFullscreen();
-    }else if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();     // Firefox
-    }else if (element.webkitRequestFullscreen) {
-      element.webkitRequestFullscreen();  // Safari
-    }else if(element.msRequestFullscreen) {
-      element.msRequestFullscreen();      // IE/Edge
+function enterFullScreen() {
+    if(!document.documentElement.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    }
+};
+  
+
+function exitFullScreen(element) {
+    if(document.documentElement.fullscreenElement) {
+		document.exitFullscreen();
     }
 };
   
@@ -180,7 +182,7 @@ function onMeetFound(){
             canFullScreen = true;
         } else {
             if(canFullScreen){
-                setRegularScreen();
+            //    setRegularScreen();
             }
 
             canFullScreen = false;
