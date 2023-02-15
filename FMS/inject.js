@@ -61,12 +61,15 @@ function enterFullScreen(element) {
 };
   
 function zoom(inout) {
-    if (zoomValue !== undefined) {
+    if (zoomValue !== undefined && zoomValue !== null && isFull) {
 
         try {
             document.querySelector(".tTdl5d").remove();
         } catch { }
-        document.querySelector(".koV58.Zi94Db.S7urwe").style.overflow = "auto";
+
+        try {
+            document.querySelector(".koV58.Zi94Db.S7urwe").style.overflow = "auto";
+        } catch { }
 
         if (inout == 0) { //zoomIn
             zoomValue += 50;
@@ -75,12 +78,17 @@ function zoom(inout) {
             zoomValue -= 50;
             console.log("ZoomOut");
         } else if (inout == 2) {
+            try {
+                document.querySelector(".koV58.Zi94Db.S7urwe").style.overflow = "hidden";
+            } catch { }
             zoomValue = 2;
             console.log("Reset");
         }
 
         document.querySelector(".Gv1mTb-aTv5jf").style.height = "calc(100% + " + zoomValue + "px)";
         document.querySelector(".Gv1mTb-aTv5jf").style.width = "calc(100% + " + zoomValue + "px)";
+    }else{
+        alert("You aren't in fullscreen");
     }
 }
 
