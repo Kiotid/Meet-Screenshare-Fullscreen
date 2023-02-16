@@ -3,11 +3,15 @@ function setFullScreen() {
     parentScreen = document.querySelector(".T4LgNb").parentElement;
 
     var trashElements = [document.querySelector(".aGWPv"), document.querySelector(".OGZrkc"), document.querySelector("J0M6X.ZmuLbd.Didmac.G03iKb"), document.querySelector(".lefKC"), document.querySelector(".tTdl5d")]
-    
+    /*
     if(trashElements[1] != null) trashElements[1].remove(); //chi sta condividendo
     if(trashElements[2] != null) trashElements[2].remove(); //chi sta condividendo
     if(trashElements[3] != null) trashElements[3].childNodes.forEach(el=>{el.remove()}); 
-    if(trashElements[3] != null) trashElements[3].childNodes.forEach(el=>{el.remove()}); 
+    if(trashElements[3] != null) trashElements[3].childNodes.forEach(el=>{el.remove()}); */
+    if(trashElements[1] != null) trashElements[1].style.display = "none"; //chi sta condividendo
+    if(trashElements[2] != null) trashElements[2].style.display = "none"; //chi sta condividendo
+    if(trashElements[3] != null) trashElements[3].childNodes.forEach(el=>{el.style.display = "none";}); 
+    if(trashElements[3] != null) trashElements[3].childNodes.forEach(el=>{el.style.display = "none";}); 
     if(trashElements[4] != null) trashElements[4].setAttribute("jsaction", "");
     if(trashElements[4] != null) trashElements[4].setAttribute("jscontroller", "");
     if(trashElements[0] != null) trashElements[0].setAttribute("jscontroller", ""); //avatar
