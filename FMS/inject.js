@@ -2,42 +2,38 @@ function setFullScreen() {
     regularScreen = document.querySelector(".T4LgNb").parentElement.innerHTML;
     parentScreen = document.querySelector(".T4LgNb").parentElement;
 
-    try {
-        document.querySelector(".aGWPv").remove(); //avatar
-    } catch { }
+    var trashElements = [document.querySelector(".aGWPv"), document.querySelector(".OGZrkc"), document.querySelector("J0M6X.ZmuLbd.Didmac.G03iKb"), document.querySelector(".lefKC"), document.querySelector(".tTdl5d")]
+    
+    if(trashElements[1] != null) trashElements[1].remove(); //chi sta condividendo
+    if(trashElements[2] != null) trashElements[2].remove(); //chi sta condividendo
+    if(trashElements[3] != null) trashElements[3].childNodes.forEach(el=>{el.remove()}); 
+    if(trashElements[3] != null) trashElements[3].childNodes.forEach(el=>{el.remove()}); 
+    if(trashElements[4] != null) trashElements[4].setAttribute("jsaction", "");
+    if(trashElements[4] != null) trashElements[4].setAttribute("jscontroller", "");
+    if(trashElements[0] != null) trashElements[0].setAttribute("jscontroller", ""); //avatar
+    if(trashElements[0] != null) trashElements[0].style.display = "none";
+    
+    let screenSharingParent = document.querySelector(".axUSnc.cZXVke.P9KVBf");
+    let screenSharingParentStyle = screenSharingParent.style;
+    screenSharingParent.setAttribute("jsaction", "");
+    screenSharingParentStyle.inset = "unset";
+    screenSharingParentStyle.width = "100%";
+    screenSharingParentStyle.height = "100%";
 
-    try {
-        document.querySelector(".OGZrkc").remove(); //chi sta condividendo
-    } catch { }
+    let screenSharingStyle = document.querySelector(".dkjMxf").style;
+    screenSharingStyle.left = "0";
+    screenSharingStyle.top = "0";
+    screenSharingStyle.width = "100%";
+    screenSharingStyle.height = "100%";
 
-    try {
-        document.querySelector("J0M6X.ZmuLbd.Didmac.G03iKb").remove(); //chi sta condividendo
-    } catch { }
+    let bottomBar = document.querySelector(".Sdwpn.P9KVBf").style;
+    bottomBar.background = "transparent";
+    bottomBar.marginBottom = "10px";
+    bottomBar.transform = "scale(.8)";
 
-    try {
-        document.querySelector(".lefKC").childNodes.forEach(el=>{el.remove()});
-        document.querySelector(".lefKC").childNodes.forEach(el=>{el.remove()});
-    } catch { }
-
-    try {
-		document.querySelector(".aGWPv").style.display = "none";
-    } catch { }
-
-    document.querySelector(".axUSnc.cZXVke.P9KVBf").setAttribute("jsaction", "");
-    document.querySelector(".axUSnc.cZXVke.P9KVBf").style.inset = "unset"
-    document.querySelector(".axUSnc.cZXVke.P9KVBf").style.width = "100%"
-    document.querySelector(".axUSnc.cZXVke.P9KVBf").style.height = "100%"
-
-    document.querySelector(".dkjMxf").style.left = "0";
-    document.querySelector(".dkjMxf").style.top = "0";
-    document.querySelector(".dkjMxf").style.left = "0";
-    document.querySelector(".dkjMxf").style.width = "100%";
-    document.querySelector(".dkjMxf").style.height = "100%";
-
-    document.querySelector(".Sdwpn.P9KVBf").style.background = "transparent";
-
-    document.querySelector(".oZRSLe").style.width = "100%";
-    document.querySelector(".oZRSLe").style.height = "100%";
+    let containerStyle = document.querySelector(".oZRSLe").style;
+    containerStyle.width = "100%";
+    containerStyle.height = "100%";
 
     enterFullScreen(document.body);
 }
@@ -50,28 +46,24 @@ function setRegularScreen() {
 }
 
 function enterFullScreen() {
-    if(!document.documentElement.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    }
+    document.documentElement.requestFullscreen();
 };
   
 
 function exitFullScreen(element) {
-    if(document.documentElement.fullscreenElement) {
-		document.exitFullscreen();
-    }
+	document.exitFullscreen();
 };
   
 function zoom(inout) {
     if (zoomValue !== undefined && zoomValue !== null && isFull) {
 
+        var scrollView = document.querySelector(".koV58.Zi94Db.S7urwe").style;
+
         try {
             document.querySelector(".tTdl5d").remove();
         } catch { }
 
-        try {
-            document.querySelector(".koV58.Zi94Db.S7urwe").style.overflow = "auto";
-        } catch { }
+        if(scrollView != null) scrollView.overflow = "auto";
 
         if (inout == 0) { //zoomIn
             zoomValue += 50;
@@ -80,15 +72,15 @@ function zoom(inout) {
             zoomValue -= 50;
             console.log("ZoomOut");
         } else if (inout == 2) {
-            try {
-                document.querySelector(".koV58.Zi94Db.S7urwe").style.overflow = "hidden";
-            } catch { }
+            if(scrollView != null) scrollView.overflow = "hidden";
             zoomValue = 2;
             console.log("Reset");
         }
 
-        document.querySelector(".Gv1mTb-aTv5jf").style.height = "calc(100% + " + zoomValue + "px)";
-        document.querySelector(".Gv1mTb-aTv5jf").style.width = "calc(100% + " + zoomValue + "px)";
+        let containerScreenshareSizeStyle = document.querySelector(".Gv1mTb-aTv5jf").style;
+        let sizeValue = "calc(100% + " + zoomValue + "px)";
+        containerScreenshareSizeStyle.height = sizeValue;
+        containerScreenshareSizeStyle.width = sizeValue;
     }else{
         alert("You aren't in fullscreen");
     }
@@ -149,15 +141,18 @@ function onMeetFound(){
         </span>
     </div>`;
     
-    document.querySelector('.R5ccN').insertBefore(element, document.querySelector('.R5ccN').childNodes[3]);
-    document.querySelector('.R5ccN').insertBefore(zoomin, document.querySelector('.R5ccN').childNodes[4]);
-    document.querySelector('.R5ccN').insertBefore(zoomreset, document.querySelector('.R5ccN').childNodes[5]);
-    document.querySelector('.R5ccN').insertBefore(zoomout, document.querySelector('.R5ccN').childNodes[6]);
+    let buttonsContainer = document.querySelector('.R5ccN');
+
+    buttonsContainer.insertBefore(element, buttonsContainer.childNodes[3]);
+    buttonsContainer.insertBefore(zoomin, buttonsContainer.childNodes[4]);
+    buttonsContainer.insertBefore(zoomreset, buttonsContainer.childNodes[5]);
+    buttonsContainer.insertBefore(zoomout, buttonsContainer.childNodes[6]);
     
     document.querySelector(".fullWidthKio").addEventListener("click", () => {
         if (canFullScreen) {
             if (!isFull) {
                 isFull = true;
+                alert("Soon you will be in full screen and you will be able to zoom, to move you can: from trackpad (use the trackpad with two fingers and you can move in all directions), from mouse and keyboard (wheel to scroll up and down, shift+wheel to scroll right and left)");
                 setFullScreen();
             } else {
                 isFull = false;
@@ -197,4 +192,4 @@ const searchMeet = setInterval(() => {
         onMeetFound();
     }
 
-}, 2000);
+}, 700);
