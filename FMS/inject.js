@@ -152,7 +152,7 @@ function onMeetFound(){
         if (canFullScreen) {
             if (!isFull) {
                 isFull = true;
-                alert("Soon you will be in full screen and you will be able to zoom, to move you can: from trackpad (use the trackpad with two fingers and you can move in all directions), from mouse and keyboard (wheel to scroll up and down, shift+wheel to scroll right and left)");
+                alert("Soon the screenshare will be in fullscreen and you will be able to zoom, to move you can: use the scrollbars, use the trackpad (use the trackpad with two fingers and you can move in all directions), use mouse and keyboard (wheel to scroll up and down, shift+wheel to scroll right and left)");
                 setFullScreen();
             } else {
                 isFull = false;
