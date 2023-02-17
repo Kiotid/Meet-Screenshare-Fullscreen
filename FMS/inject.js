@@ -29,11 +29,18 @@ function setFullScreen() {
     screenSharingStyle.width = "100%";
     screenSharingStyle.height = "100%";
 
-    let bottomBarParent = document.querySelector(".J0M6X.nulMpf.Didmac.G03iKb").style;
-    bottomBarParent.marginBottom = "1.5vh";
-    bottomBarParent.transform = "scale(.8)";
+    let bottomBarParent = document.querySelector(".J0M6X.nulMpf.Didmac.G03iKb");
+    let bottomBar = document.querySelector(".UnvNgf.Sdwpn.P9KVBf").style;
 
-    let bottomBar = document.querySelector(".UnvNgf.Sdwpn.P9KVBf.mP3Ih").style;
+    if(bottomBarParent != null) {
+        bottomBarParent.style.marginBottom = "1.5vh";
+        bottomBarParent.style.transform = "scale(.8)";
+    }else{
+        bottomBar.marginBottom = "1.5vh";
+        bottomBar.transform = "scale(.8)";
+
+    }
+
     bottomBar.background = "transparent";
     
 
@@ -74,11 +81,18 @@ function setRegularScreen() {
     screenSharingStyle.width = "100%";
     screenSharingStyle.height = "100%";
 
-    let bottomBarParent = document.querySelector(".J0M6X.nulMpf.Didmac.G03iKb").style;
-    bottomBarParent.marginBottom = "0";
-    bottomBarParent.transform = "scale(1)";
+    let bottomBarParent = document.querySelector(".J0M6X.nulMpf.Didmac.G03iKb");
+    let bottomBar = document.querySelector(".UnvNgf.Sdwpn.P9KVBf").style;
 
-    let bottomBar = document.querySelector(".UnvNgf.Sdwpn.P9KVBf.mP3Ih").style;
+    if(bottomBarParent != null) {
+        bottomBarParent.style.marginBottom = "0";
+        bottomBarParent.style.transform = "scale(1)";
+    }else{
+        bottomBar.marginBottom = "0";
+        bottomBar.transform = "scale(1)";
+
+    }
+
     bottomBar.background = "rgb(32,33,36)";
 
     let containerStyle = document.querySelector(".oZRSLe").style;
@@ -150,16 +164,21 @@ var canFullScreen = false;
 var meetFound = false;
 
 function moveButtonsBar(keyCode) {
+    const ARROW_KEYS = {
+        ARROW_UP: '38',
+        ARROW_DOWN: '40',
+        ARROW_LEFT: '37',
+        ARROW_RIGHT: '39'
+    }
 
-    let buttonsBarContainer = document.querySelector(".UnvNgf.Sdwpn.P9KVBf.IYIJAc.BIBiNe");
+    let buttonsBarContainer = document.querySelector(".UnvNgf.Sdwpn.P9KVBf");
     let buttonsBarCenter = document.querySelector(".R5ccN");
     let buttonsBarLeft = document.querySelector(".jsNRx");
     let buttonsBarLeftChild = document.querySelector(".SGP0hd.kunNie");
 
-    if (buttonsBarContainer == null) return;
-    if (buttonsBarCenter == null) return;
-    if (buttonsBarLeft == null) return;
-    if (buttonsBarLeftChild == null) return;
+    if (buttonsBarContainer == null || buttonsBarCenter == null || buttonsBarLeft == null || buttonsBarLeftChild == null) return;
+
+    console.log("Moving buttons bar")
 
     let buttonsBarContainerStyle = buttonsBarContainer.style;
     let buttonsBarCenterStyle = buttonsBarCenter.style;
@@ -228,12 +247,6 @@ function moveButtonsBar(keyCode) {
 }
 
 function checkKey(e) {
-    const ARROW_KEYS = {
-        ARROW_UP: '38',
-        ARROW_DOWN: '40',
-        ARROW_LEFT: '37',
-        ARROW_RIGHT: '39'
-    }
 
     e = e || window.event;
 
