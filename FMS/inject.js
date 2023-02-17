@@ -1,4 +1,157 @@
+
+function moveButtonsBar(keyCode) {
+
+    keyCode = parseInt(keyCode);
+
+    const KEYS = {
+        ARROW_UP: 38,
+        ARROW_DOWN: 40,
+        ARROW_LEFT: 37,
+        ARROW_RIGHT: 39,
+        H: 72
+    }
+
+    let buttonsBarContainerContainer = document.querySelector(".J0M6X.nulMpf.Didmac.G03iKb");
+    let buttonsBarContainer = document.querySelector(".UnvNgf.Sdwpn.P9KVBf");
+    let buttonsBarCenter = document.querySelector(".R5ccN");
+    let buttonsBarLeft = document.querySelector(".jsNRx");
+    let buttonsBarLeftChild = document.querySelector(".tMdQNe");
+
+    if (buttonsBarContainerContainer == null || buttonsBarContainer == null || buttonsBarCenter == null || buttonsBarLeft == null || buttonsBarLeftChild == null) return;
+
+    let buttonsBarContainerContainerStyle = buttonsBarContainerContainer.style;
+    let buttonsBarContainerStyle = buttonsBarContainer.style;
+    let buttonsBarCenterStyle = buttonsBarCenter.style;
+    let buttonsBarLeftStyle = buttonsBarLeft.style;
+    let buttonsBarLeftChildStyle = buttonsBarLeftChild.style;
+
+    let top;
+    let left;
+    let width;
+    let height;
+    let marginBottom;
+    let transform;
+    let display;
+    let flexDirection;
+    let alignItems;
+    let marginRight;
+    let gap;
+
+    marginRight = "0";
+    gap = "10px";
+    display = "flex";
+    alignItems = "center";
+
+    switch (keyCode) {
+
+        case KEYS.ARROW_UP:
+
+            console.log("Moving buttons bar top")
+            top = "0";
+            left = "0";
+            width = "100%";
+            height = "10vh";
+            transform = "scale(.8)";
+            flexDirection = "row";
+            marginBottom = "0";
+            justifyContent = "center";
+            buttonsBarContainerContainerStyle.alignItems = "center";
+
+            break;
+        case KEYS.ARROW_DOWN:
+            
+            console.log("Moving buttons bar down")
+            top = "auto"
+            left = "0";
+            width = "100%";
+            height = "auto";
+            transform = "scale(.8)";
+            flexDirection = "row";
+            marginBottom = "1.5vh";
+            justifyContent = "center";
+            buttonsBarContainerContainerStyle.alignItems = "center";
+
+            break;
+
+        case KEYS.ARROW_LEFT:
+        
+            console.log("Moving buttons bar left")
+            left = "0";
+            width = "90px";
+            height = "100%";
+            transform = "scale(1)";
+            flexDirection = "column";
+            marginBottom = "0";
+            justifyContent = "auto";	
+            buttonsBarContainerContainerStyle.alignItems = "flex-start";
+
+            break;
+        case KEYS.ARROW_RIGHT:
+            
+            console.log("Moving buttons bar right")
+            right = "0";
+            width = "90px";
+            height = "100%";
+            transform = "scale(1)";
+            flexDirection = "column";
+            marginBottom = "0";
+            justifyContent = "auto";
+            buttonsBarContainerContainerStyle.alignItems = "flex-end";
+
+            break;
+
+        case KEYS.H: 
+            buttonsBarContainerContainerStyle.display = buttonsBarContainerContainerStyle.display == "none" ? "flex" : "none";
+            break;
+    }
+
+    buttonsBarContainerContainerStyle.top = top;        
+    buttonsBarContainerContainerStyle.marginBottom = marginBottom;
+    buttonsBarContainerContainerStyle.display = display;
+    buttonsBarContainerContainerStyle.flexDirection = flexDirection;
+    buttonsBarContainerContainerStyle.justifyContent = justifyContent;
+    buttonsBarContainerContainerStyle.height = height;
+
+    buttonsBarContainerStyle.top = top;        
+    buttonsBarContainerStyle.left = left;
+    buttonsBarContainerStyle.width = width;
+    buttonsBarContainerStyle.height = height;
+    buttonsBarContainerStyle.display = display;
+    buttonsBarContainerStyle.flexDirection = flexDirection;
+    buttonsBarContainerStyle.alignItems = alignItems;
+    buttonsBarContainerStyle.transform = transform;
+
+    buttonsBarCenterStyle.display = display;
+    buttonsBarCenterStyle.flexDirection = flexDirection;
+    buttonsBarCenterStyle.alignItems = alignItems;
+    buttonsBarCenterStyle.gap = gap;
+
+    buttonsBarLeftStyle.display = display;
+    buttonsBarLeftStyle.flexDirection = flexDirection;
+    buttonsBarLeftStyle.alignItems = alignItems;
+    buttonsBarLeftStyle.marginRight = marginRight;
+
+    buttonsBarLeftChildStyle.display = display;
+    buttonsBarLeftChildStyle.flexDirection = flexDirection;
+    buttonsBarLeftChildStyle.alignItems = alignItems;
+
+}
+
+function keyEvent(e){
+    
+    e = e || window.event;
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+    moveButtonsBar(e.keyCode);
+    
+}
+
 function setFullScreen() {
+
+    document.onkeydown = keyEvent;
+
+    moveButtonsBar(40);
 
     let trashElements = [document.querySelector(".aGWPv"), document.querySelector(".OGZrkc"), document.querySelector("J0M6X.ZmuLbd.Didmac.G03iKb"), document.querySelector(".lefKC"), document.querySelector(".tTdl5d")]
     /*
@@ -30,19 +183,13 @@ function setFullScreen() {
     screenSharingStyle.height = "100%";
 
     let bottomBarParent = document.querySelector(".J0M6X.nulMpf.Didmac.G03iKb");
+
+    if(bottomBarParent != null) bottomBarParent.style.marginBottom = "1.5vh";
+
     let bottomBar = document.querySelector(".UnvNgf.Sdwpn.P9KVBf").style;
 
-    if(bottomBarParent != null) {
-        bottomBarParent.style.marginBottom = "1.5vh";
-        bottomBarParent.style.transform = "scale(.8)";
-    }else{
-        bottomBar.marginBottom = "1.5vh";
-        bottomBar.transform = "scale(.8)";
-
-    }
-
+    bottomBar.transform = "scale(.8)";
     bottomBar.background = "transparent";
-    
 
     let containerStyle = document.querySelector(".oZRSLe").style;
     containerStyle.width = "100%";
@@ -53,6 +200,10 @@ function setFullScreen() {
 }
 
 function setRegularScreen() {
+
+    document.onkeydown = null;
+
+    moveButtonsBar(40);
 
     zoom(2);
 
@@ -82,17 +233,12 @@ function setRegularScreen() {
     screenSharingStyle.height = "100%";
 
     let bottomBarParent = document.querySelector(".J0M6X.nulMpf.Didmac.G03iKb");
+
+    if(bottomBarParent != null) bottomBarParent.style.marginBottom = "0";
+
     let bottomBar = document.querySelector(".UnvNgf.Sdwpn.P9KVBf").style;
 
-    if(bottomBarParent != null) {
-        bottomBarParent.style.marginBottom = "0";
-        bottomBarParent.style.transform = "scale(1)";
-    }else{
-        bottomBar.marginBottom = "0";
-        bottomBar.transform = "scale(1)";
-
-    }
-
+    bottomBar.transform = "scale(1)";
     bottomBar.background = "rgb(32,33,36)";
 
     let containerStyle = document.querySelector(".oZRSLe").style;
@@ -163,97 +309,6 @@ var canFullScreen = false;
 
 var meetFound = false;
 
-function moveButtonsBar(keyCode) {
-    const ARROW_KEYS = {
-        ARROW_UP: '38',
-        ARROW_DOWN: '40',
-        ARROW_LEFT: '37',
-        ARROW_RIGHT: '39'
-    }
-
-    let buttonsBarContainer = document.querySelector(".UnvNgf.Sdwpn.P9KVBf");
-    let buttonsBarCenter = document.querySelector(".R5ccN");
-    let buttonsBarLeft = document.querySelector(".jsNRx");
-    let buttonsBarLeftChild = document.querySelector(".SGP0hd.kunNie");
-
-    if (buttonsBarContainer == null || buttonsBarCenter == null || buttonsBarLeft == null || buttonsBarLeftChild == null) return;
-
-    console.log("Moving buttons bar")
-
-    let buttonsBarContainerStyle = buttonsBarContainer.style;
-    let buttonsBarCenterStyle = buttonsBarCenter.style;
-    let buttonsBarLeftStyle = buttonsBarLeft.style;
-    let buttonsBarLeftChildStyle = buttonsBarLeftChild.style;
-
-    let top;
-    let left;
-    let width;
-    let height;
-    let display;
-    let flexDirection;
-    let alignItems;
-    let marginRight;
-    let gap;
-
-    marginRight = "0";
-    gap = "10px";
-
-    switch (keyCode) {
-
-        case ARROW_KEYS.ARROW_UP:
-            left = "0";
-            top = "0";
-            width = "100%";
-            height = "12vh";
-            display = "flex";
-            flexDirection = "row";
-            alignItems = "center";
-            break;
-        case ARROW_KEYS.ARROW_DOWN:
-            break;
-        case ARROW_KEYS.ARROW_LEFT:
-            left = "0";
-            width = "5vw";
-            height = "100%";
-            display = "flex";
-            flexDirection = "column";
-            alignItems = "center";
-            break;
-        case ARROW_KEYS.ARROW_RIGHT:
-            break;
-
-        buttonsBarContainerStyle.top = top;        
-        buttonsBarContainerStyle.left = left;
-        buttonsBarContainerStyle.width = width;
-        buttonsBarContainerStyle.height = height;
-        buttonsBarContainerStyle.display = display;
-        buttonsBarContainerStyle.flexDirection = flexDirection;
-        buttonsBarContainerStyle.alignItems = alignItems;
-
-        buttonsBarCenterStyle.display = display;
-        buttonsBarCenterStyle.flexDirection = flexDirection;
-        buttonsBarCenterStyle.alignItems = alignItems;
-        buttonsBarCenterStyle.gap = gap;
-
-        buttonsBarLeftStyle.display = display;
-        buttonsBarLeftStyle.flexDirection = flexDirection;
-        buttonsBarLeftStyle.alignItems = alignItems;
-        buttonsBarLeftStyle.marginRight = marginRight;
-
-        buttonsBarLeftChildStyle.display = display;
-        buttonsBarLeftChildStyle.flexDirection = flexDirection;
-        buttonsBarLeftChildStyle.alignItems = alignItems;
-    }
-}
-
-function checkKey(e) {
-
-    e = e || window.event;
-
-    moveButtonsBar(e.keyCode);
-
-}
-
 function onMeetFound(){
 
     meetFound = true;
@@ -263,6 +318,7 @@ function onMeetFound(){
             createHTML: (string, sink) => string
         });
     }*/
+
     
     var element = document.createElement('div');
     element.innerHTML = `<div class="fullScreenKio">
