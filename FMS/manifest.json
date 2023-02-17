@@ -14,9 +14,6 @@
         "default_popup": "index.html",
         "default_title": "Fullscreen-Meet-Screenshare"
     },
-    "permissions": [
-        "tabs"
-    ],
     "icons": {
         "192": "icon/logo.ico",
         "16": "icon/logo16x16.png",
