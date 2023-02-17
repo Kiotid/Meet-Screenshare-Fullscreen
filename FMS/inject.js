@@ -149,6 +149,98 @@ var canFullScreen = false;
 
 var meetFound = false;
 
+function moveButtonsBar(keyCode) {
+
+    let buttonsBarContainer = document.querySelector(".UnvNgf.Sdwpn.P9KVBf.IYIJAc.BIBiNe");
+    let buttonsBarCenter = document.querySelector(".R5ccN");
+    let buttonsBarLeft = document.querySelector(".jsNRx");
+    let buttonsBarLeftChild = document.querySelector(".SGP0hd.kunNie");
+
+    if (buttonsBarContainer == null) return;
+    if (buttonsBarCenter == null) return;
+    if (buttonsBarLeft == null) return;
+    if (buttonsBarLeftChild == null) return;
+
+    let buttonsBarContainerStyle = buttonsBarContainer.style;
+    let buttonsBarCenterStyle = buttonsBarCenter.style;
+    let buttonsBarLeftStyle = buttonsBarLeft.style;
+    let buttonsBarLeftChildStyle = buttonsBarLeftChild.style;
+
+    let top;
+    let left;
+    let width;
+    let height;
+    let display;
+    let flexDirection;
+    let alignItems;
+    let marginRight;
+    let gap;
+
+    marginRight = "0";
+    gap = "10px";
+
+    switch (keyCode) {
+
+        case ARROW_KEYS.ARROW_UP:
+            left = "0";
+            top = "0";
+            width = "100%";
+            height = "12vh";
+            display = "flex";
+            flexDirection = "row";
+            alignItems = "center";
+            break;
+        case ARROW_KEYS.ARROW_DOWN:
+            break;
+        case ARROW_KEYS.ARROW_LEFT:
+            left = "0";
+            width = "5vw";
+            height = "100%";
+            display = "flex";
+            flexDirection = "column";
+            alignItems = "center";
+            break;
+        case ARROW_KEYS.ARROW_RIGHT:
+            break;
+
+        buttonsBarContainerStyle.top = top;        
+        buttonsBarContainerStyle.left = left;
+        buttonsBarContainerStyle.width = width;
+        buttonsBarContainerStyle.height = height;
+        buttonsBarContainerStyle.display = display;
+        buttonsBarContainerStyle.flexDirection = flexDirection;
+        buttonsBarContainerStyle.alignItems = alignItems;
+
+        buttonsBarCenterStyle.display = display;
+        buttonsBarCenterStyle.flexDirection = flexDirection;
+        buttonsBarCenterStyle.alignItems = alignItems;
+        buttonsBarCenterStyle.gap = gap;
+
+        buttonsBarLeftStyle.display = display;
+        buttonsBarLeftStyle.flexDirection = flexDirection;
+        buttonsBarLeftStyle.alignItems = alignItems;
+        buttonsBarLeftStyle.marginRight = marginRight;
+
+        buttonsBarLeftChildStyle.display = display;
+        buttonsBarLeftChildStyle.flexDirection = flexDirection;
+        buttonsBarLeftChildStyle.alignItems = alignItems;
+    }
+}
+
+function checkKey(e) {
+    const ARROW_KEYS = {
+        ARROW_UP: '38',
+        ARROW_DOWN: '40',
+        ARROW_LEFT: '37',
+        ARROW_RIGHT: '39'
+    }
+
+    e = e || window.event;
+
+    moveButtonsBar(e.keyCode);
+
+}
+
 function onMeetFound(){
 
     meetFound = true;
