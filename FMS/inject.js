@@ -1,7 +1,4 @@
-
 function moveButtonsBar(keyCode) {
-
-    keyCode = parseInt(keyCode);
 
     const KEYS = {
         ARROW_UP: 38,
@@ -16,17 +13,21 @@ function moveButtonsBar(keyCode) {
     let buttonsBarCenter = document.querySelector(".R5ccN");
     let buttonsBarLeft = document.querySelector(".jsNRx");
     let buttonsBarLeftChild = document.querySelector(".tMdQNe");
+    buttonsBarLeftChild = buttonsBarLeftChild == null ? document.querySelector(".SGP0hd.kunNie") : buttonsBarLeftChild;
 
-    if (buttonsBarContainerContainer == null || buttonsBarContainer == null || buttonsBarCenter == null || buttonsBarLeft == null || buttonsBarLeftChild == null) return;
+    if (buttonsBarContainer == null || buttonsBarCenter == null || buttonsBarLeft == null || buttonsBarLeftChild == null) return;
 
-    let buttonsBarContainerContainerStyle = buttonsBarContainerContainer.style;
-    let buttonsBarContainerStyle = buttonsBarContainer.style;
-    let buttonsBarCenterStyle = buttonsBarCenter.style;
-    let buttonsBarLeftStyle = buttonsBarLeft.style;
-    let buttonsBarLeftChildStyle = buttonsBarLeftChild.style;
+    let buttonsBarContainerContainerStyle;
+
+    if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle = buttonsBarContainerContainer.style;
+    var buttonsBarContainerStyle = buttonsBarContainer.style;
+    var buttonsBarCenterStyle = buttonsBarCenter.style;
+    var buttonsBarLeftStyle = buttonsBarLeft.style;
+    var buttonsBarLeftChildStyle = buttonsBarLeftChild.style;
 
     let top;
     let left;
+    let right;
     let width;
     let height;
     let marginBottom;
@@ -42,6 +43,20 @@ function moveButtonsBar(keyCode) {
     display = "flex";
     alignItems = "center";
 
+    let el = document.querySelector(".jsNRx");
+    el.childNodes[el.childElementCount-2].style.display = "none";
+
+    let target = buttonsBarContainerContainer != null ? buttonsBarContainerContainerStyle : buttonsBarContainerStyle;
+    
+    if(buttonsBarContainerStyle.display != "none"){
+        target.display = display;
+        buttonsBarContainerStyle.display = display;
+        buttonsBarCenterStyle.display = display;
+        buttonsBarLeftStyle.display = display;
+        buttonsBarLeftChildStyle.display = display;
+    }
+    console.log("Key pressed: " + keyCode)
+    
     switch (keyCode) {
 
         case KEYS.ARROW_UP:
@@ -55,7 +70,8 @@ function moveButtonsBar(keyCode) {
             flexDirection = "row";
             marginBottom = "0";
             justifyContent = "center";
-            buttonsBarContainerContainerStyle.alignItems = "center";
+
+            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "center";
 
             break;
         case KEYS.ARROW_DOWN:
@@ -69,7 +85,7 @@ function moveButtonsBar(keyCode) {
             flexDirection = "row";
             marginBottom = "1.5vh";
             justifyContent = "center";
-            buttonsBarContainerContainerStyle.alignItems = "center";
+            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "center";
 
             break;
 
@@ -79,59 +95,57 @@ function moveButtonsBar(keyCode) {
             left = "0";
             width = "90px";
             height = "100%";
-            transform = "scale(1)";
+            transform = "scale(.9)";
             flexDirection = "column";
             marginBottom = "0";
             justifyContent = "auto";	
-            buttonsBarContainerContainerStyle.alignItems = "flex-start";
+            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "flex-start";
 
             break;
         case KEYS.ARROW_RIGHT:
             
             console.log("Moving buttons bar right")
             right = "0";
+            left = "auto";
             width = "90px";
             height = "100%";
-            transform = "scale(1)";
+            transform = "scale(.9)";
             flexDirection = "column";
             marginBottom = "0";
             justifyContent = "auto";
-            buttonsBarContainerContainerStyle.alignItems = "flex-end";
+            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "flex-end";
 
             break;
 
         case KEYS.H: 
-            buttonsBarContainerContainerStyle.display = buttonsBarContainerContainerStyle.display == "none" ? "flex" : "none";
+            buttonsBarContainerStyle.display = buttonsBarContainerStyle.display == "none" ? "flex" : "none";
+            console.log(buttonsBarContainerStyle.display + " " + buttonsBarContainerStyle)
             break;
     }
 
-    buttonsBarContainerContainerStyle.top = top;        
-    buttonsBarContainerContainerStyle.marginBottom = marginBottom;
-    buttonsBarContainerContainerStyle.display = display;
-    buttonsBarContainerContainerStyle.flexDirection = flexDirection;
-    buttonsBarContainerContainerStyle.justifyContent = justifyContent;
-    buttonsBarContainerContainerStyle.height = height;
+    target.top = top;        
+    target.marginBottom = marginBottom;
+    target.flexDirection = flexDirection;
+    target.justifyContent = justifyContent;
+    target.height = height;
 
     buttonsBarContainerStyle.top = top;        
     buttonsBarContainerStyle.left = left;
+    buttonsBarContainerStyle.right = right;
     buttonsBarContainerStyle.width = width;
     buttonsBarContainerStyle.height = height;
-    buttonsBarContainerStyle.display = display;
     buttonsBarContainerStyle.flexDirection = flexDirection;
     buttonsBarContainerStyle.alignItems = alignItems;
     buttonsBarContainerStyle.transform = transform;
 
-    buttonsBarCenterStyle.display = display;
     buttonsBarCenterStyle.flexDirection = flexDirection;
     buttonsBarCenterStyle.alignItems = alignItems;
     buttonsBarCenterStyle.gap = gap;
 
-    buttonsBarLeftStyle.display = display;
     buttonsBarLeftStyle.flexDirection = flexDirection;
     buttonsBarLeftStyle.alignItems = alignItems;
     buttonsBarLeftStyle.marginRight = marginRight;
 
-    buttonsBarLeftChildStyle.display = display;
     buttonsBarLeftChildStyle.flexDirection = flexDirection;
     buttonsBarLeftChildStyle.alignItems = alignItems;
 
@@ -149,7 +163,7 @@ function keyEvent(e){
 
 function setFullScreen() {
 
-    document.onkeydown = keyEvent;
+    document.addEventListener("keydown", keyEvent);
 
     moveButtonsBar(40);
 
