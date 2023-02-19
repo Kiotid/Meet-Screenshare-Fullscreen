@@ -2,7 +2,7 @@ Fullscreen Meet Screenshare - ALPHA
 =======
 ![legenda_estensione](https://i.imgur.com/FcDL8li.png)
 =======
-[<img src="https://i.imgur.com/RRPDCRS.gif" width="50%">](https://i.imgur.com/cAPFId9.mp4)
+[![Watch the video](https://i.imgur.com/iGjaRVK.png)](https://i.imgur.com/cAPFId9.mp4)
 
 # Tools used #
 * HTML, CSS and JavaScript
