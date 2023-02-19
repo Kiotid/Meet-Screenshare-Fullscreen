@@ -1,10 +1,8 @@
-Fullscreen Meet Screenshare
+Fullscreen Meet Screenshare - ALPHA
 =======
 ![legenda_estensione](https://i.imgur.com/FcDL8li.png)
 =======
-![showoff](https://i.imgur.com/cAPFId9.mp4)
-
-ALPHA
+![showoff](https://i.imgur.com/RRPDCRS.gif)
 
 # Tools used #
 * HTML, CSS and JavaScript
