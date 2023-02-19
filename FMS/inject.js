@@ -128,6 +128,7 @@ function moveButtonsBar(keyCode) {
     target.flexDirection = flexDirection;
     target.justifyContent = justifyContent;
     target.height = height;
+    target.alignItems = alignItems;
 
     buttonsBarContainerStyle.top = top;        
     buttonsBarContainerStyle.left = left;
