@@ -131,32 +131,35 @@ function moveButtonsBar(keyCode) {
             break;
     }
 
-    target.top = top;        
-    target.margin = margin;
-    target.flexDirection = flexDirection;
-    target.justifyContent = justifyContent;
-    target.height = height;
-    target.alignItems = alignItems;
+    if(buttonsBarContainerStyle.display != "none"){
 
-    buttonsBarContainerStyle.top = top;        
-    buttonsBarContainerStyle.left = left;
-    buttonsBarContainerStyle.right = right;
-    buttonsBarContainerStyle.width = width;
-    buttonsBarContainerStyle.height = height;
-    buttonsBarContainerStyle.flexDirection = flexDirection;
-    buttonsBarContainerStyle.alignItems = alignItems;
-    buttonsBarContainerStyle.transform = transform;
+        target.top = top;        
+        target.margin = margin;
+        target.flexDirection = flexDirection;
+        target.justifyContent = justifyContent;
+        target.height = height;
+        target.alignItems = alignItems;
 
-    buttonsBarCenterStyle.flexDirection = flexDirection;
-    buttonsBarCenterStyle.alignItems = alignItems;
-    buttonsBarCenterStyle.gap = gap;
+        buttonsBarContainerStyle.top = top;        
+        buttonsBarContainerStyle.left = left;
+        buttonsBarContainerStyle.right = right;
+        buttonsBarContainerStyle.width = width;
+        buttonsBarContainerStyle.height = height;
+        buttonsBarContainerStyle.flexDirection = flexDirection;
+        buttonsBarContainerStyle.alignItems = alignItems;
+        buttonsBarContainerStyle.transform = transform;
 
-    buttonsBarLeftStyle.flexDirection = flexDirection;
-    buttonsBarLeftStyle.alignItems = alignItems;
-    buttonsBarLeftStyle.marginRight = marginRight;
+        buttonsBarCenterStyle.flexDirection = flexDirection;
+        buttonsBarCenterStyle.alignItems = alignItems;
+        buttonsBarCenterStyle.gap = gap;
 
-    buttonsBarLeftChildStyle.flexDirection = flexDirection;
-    buttonsBarLeftChildStyle.alignItems = alignItems;
+        buttonsBarLeftStyle.flexDirection = flexDirection;
+        buttonsBarLeftStyle.alignItems = alignItems;
+        buttonsBarLeftStyle.marginRight = marginRight;
+
+        buttonsBarLeftChildStyle.flexDirection = flexDirection;
+        buttonsBarLeftChildStyle.alignItems = alignItems;
+    }
 
 }
 
