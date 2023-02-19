@@ -30,7 +30,7 @@ function moveButtonsBar(keyCode) {
     let right;
     let width;
     let height;
-    let marginBottom;
+    let margin;
     let transform;
     let display;
     let flexDirection;
@@ -42,6 +42,7 @@ function moveButtonsBar(keyCode) {
     gap = "10px";
     display = "flex";
     alignItems = "center";
+    justifyContent = "center";
 
     let el = document.querySelector(".jsNRx");
     el.childNodes[el.childElementCount-2].style.display = "none";
@@ -68,10 +69,10 @@ function moveButtonsBar(keyCode) {
             height = "10vh";
             transform = "scale(.8)";
             flexDirection = "row";
-            marginBottom = "0";
-            justifyContent = "center";
+            margin = "0 0 0 0";
+            target.width = width;
 
-            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "center";
+            //if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "center";
 
             break;
         case KEYS.ARROW_DOWN:
@@ -83,9 +84,10 @@ function moveButtonsBar(keyCode) {
             height = "auto";
             transform = "scale(.8)";
             flexDirection = "row";
-            marginBottom = "1.5vh";
-            justifyContent = "center";
-            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "center";
+            margin = "0 0 1.5vh 0";
+            target.width = width;
+
+            //if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "center";
 
             break;
 
@@ -97,9 +99,12 @@ function moveButtonsBar(keyCode) {
             height = "100%";
             transform = "scale(.9)";
             flexDirection = "column";
-            marginBottom = "0";
-            justifyContent = "auto";	
-            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "flex-start";
+            margin = "0 0 0 1.5vh";
+            justifyContent = "auto";
+            alignItems = "flex-start";
+            target.width = width;
+	
+            //if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "flex-start";
 
             break;
         case KEYS.ARROW_RIGHT:
@@ -111,9 +116,12 @@ function moveButtonsBar(keyCode) {
             height = "100%";
             transform = "scale(.9)";
             flexDirection = "column";
-            marginBottom = "0";
+            margin = "0 1.5vh 0 0";
             justifyContent = "auto";
-            if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "flex-end";
+            alignItems = "flex-end";	
+            target.width = "99%";
+
+            //if (buttonsBarContainerContainer != null) buttonsBarContainerContainerStyle.alignItems = "center"; else buttonsBarContainerStyle.alignItems = "flex-end";
 
             break;
 
@@ -124,7 +132,7 @@ function moveButtonsBar(keyCode) {
     }
 
     target.top = top;        
-    target.marginBottom = marginBottom;
+    target.margin = margin;
     target.flexDirection = flexDirection;
     target.justifyContent = justifyContent;
     target.height = height;
