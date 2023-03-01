@@ -2,7 +2,7 @@ Fullscreen Meet Screenshare - ALPHA
 =======
 RELEASE:
 =======
-!Click here[https://chrome.google.com/webstore/detail/fullscreen-meet-screensha/fcmkagcmphokakeabcdioleijoigoepk?hl=en&authuser=2]
+[Click here](https://chrome.google.com/webstore/detail/fullscreen-meet-screensha/fcmkagcmphokakeabcdioleijoigoepk?hl=en&authuser=2)
 
 ![legenda_estensione](https://i.imgur.com/FcDL8li.png)
 =======
