@@ -45,7 +45,11 @@ function moveButtonsBar(keyCode) {
     justifyContent = "center";
 
     let el = document.querySelector(".jsNRx");
-    el.childNodes[el.childElementCount-2].style.display = "none";
+    try{
+        el.childNodes[el.childElementCount-2].style.display = "none";
+    }catch(e){
+        el.childNodes[0].style.display = "none";
+    }
 
     let target = buttonsBarContainerContainer != null ? buttonsBarContainerContainerStyle : buttonsBarContainerStyle;
     
